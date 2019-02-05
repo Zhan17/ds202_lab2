@@ -1,0 +1,23 @@
+---
+title: "individual1"
+author: "Zihao Han"
+date: "February 5, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+head(choco,20)
+hist(choco$Rating)
+boxplot(choco$Rating)
+plot(choco$Cocoa.Pct,choco$Rating)
+plot(choco$Rating,choco$Cocoa.Pct)
+````
+###1. the histgram of rate of choco is the normal distribution, unimodle, symmetric, and a lot outliers
+###2. No, accroding to the graph of the scatterplot, the pionts are spread everywhere and no clue to show that there is a relationshio between cocoa.pct and rating.
+
