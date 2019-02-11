@@ -1,0 +1,45 @@
+---
+title: "team"
+author: "Zihao Han; Xi Wang"
+date: "February 11, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# overall number of chocolate bars that was rated
+```{r}
+choco<- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+
+head(choco)
+summary(choco)
+
+length(choco$Rating)
+range(choco$Rating)
+
+```
+#number of ratings depend on the year
+```{r}
+hist(choco$Review.Date)
+
+
+```
+
+#ratings compare across different company locations
+```{r}
+table(choco$Company.Location)
+
+sort.int(table(choco$Company.Location),decreasing = T)
+
+barplot(head(sort.int(table(choco$Company.Location),decreasing = T)))
+
+
+```
+
+#Brainstorm
+##what is the relationship between rating and cocoa persentage.
+```{r}
+
+```
