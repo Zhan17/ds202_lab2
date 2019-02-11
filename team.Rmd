@@ -1,5 +1,5 @@
 ---
-title: "team"
+title: "team.Rmd"
 author: "Zihao Han; Xi Wang"
 date: "February 11, 2019"
 output: html_document
@@ -9,37 +9,47 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# overall number of chocolate bars that was rated
+## Q1 overall number of chocolate bars that was rated
+##### the total number of cholate bars is **1852**
+##### and the rating is range from **1 to 5**
+
 ```{r}
 choco<- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
-
-head(choco)
-summary(choco)
 
 length(choco$Rating)
 range(choco$Rating)
 
 ```
-#number of ratings depend on the year
+
+## Q2 number of ratings depend on the year
+
 ```{r}
+
 hist(choco$Review.Date)
 
+```
+
+##Q3 ratings compare across different company locations
+##### The top 6 company locations are USA, France, Canada, UK, Italy, Ecuador
+
+```{r}
+table <- table(choco$Company.Location)
+
+table <- sort.int(table(choco$Company.Location),decreasing = T)
+
+barplot(head(table))
 
 ```
 
-#ratings compare across different company locations
+##Q4 Brainstorm
+###Question: what is the relationship between rating and cocoa persentage.
+
+##Q5 Answer 
+##### the rating of chocolate bars is significant affected by the percentage of cocos, with p-value=0.000 R^2^=0.026. 
+
 ```{r}
-table(choco$Company.Location)
 
-sort.int(table(choco$Company.Location),decreasing = T)
-
-barplot(head(sort.int(table(choco$Company.Location),decreasing = T)))
-
-
-```
-
-#Brainstorm
-##what is the relationship between rating and cocoa persentage.
-```{r}
+model1 <- lm (choco$Rating ~ choco$Cocoa.Pct)
+summary (model1)
 
 ```
